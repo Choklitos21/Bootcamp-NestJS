@@ -1,9 +1,9 @@
-import {Get, Injectable} from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { IResponse } from "./app.controller";
-import {AppConfigService} from "./config/app/config.service";
-import {User} from "./database/entities/user.entity";
-import {InjectRepository} from "@nestjs/typeorm";
-import {Repository} from "typeorm";
+import { AppConfigService } from "./config/app/config.service";
+import { User } from "./database/entities/user.entity";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
 
 @Injectable()
 export class AppService {
