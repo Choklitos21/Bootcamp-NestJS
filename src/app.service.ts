@@ -4,6 +4,7 @@ import {AppConfigService} from "./config/app/config.service";
 import {User} from "./database/entities/user.entity";
 import {InjectRepository} from "@nestjs/typeorm";
 import {Repository} from "typeorm";
+import {CreateUserDto} from "./createUser.dto";
 
 @Injectable()
 export class AppService {
@@ -23,9 +24,9 @@ export class AppService {
     };
   }
 
-  sayHi(): string{
+  /*sayHi(): string{
     return 'Buenas tardes'
-  }
+  }*/
 
   async getAllUsers(): Promise<User[]>{
     return await this.userRepo.find()
@@ -33,5 +34,13 @@ export class AppService {
 
   async getUser(userId): Promise<User>{
     return await this.userRepo.findOne(userId)
+  }
+
+  async createUser(name:string, address:string, email:string, age:number): Promise<User> {
+    return await this.userRepo.save({name, address, email, age})
+  }
+
+  async createUserDto(user: CreateUserDto): Promise<User> {
+    return await this.userRepo.save(user)
   }
 }
